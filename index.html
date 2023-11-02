@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="cursor.css">
+    <link rel="stylesheet" type="text/css" href="animate.css">
+
+
+</head>
+<body>
+    
+    <ul>
+        <li style="--i:6;"><a href="#">Home</a></li>
+        <li style="--i:5;"><a href="#">Games</a></li>
+        <li style="--i:4;"><a href="ArtCss/index.html">Art</a></li>
+        <li style="--i:3;"><a href="https://github.com/ImTheEngineer">Portfolio </a></li>
+        <li style="--i:2;"><a href="My_Curriculum-main/index.html">Curriculum</a></li>
+        <li style="--i:1;"><a href="#">Contact</a></li>
+    </ul>
+    <div id="cursor">
+        <script>
+            let cursor = document.querySelector('#cursor');
+            let body = document.querySelector('body');
+            document.onmousemove = function(e){
+                cursor.style.top = e.pageY + 'px';
+                cursor.style.left = e.pageX + 'px';
+
+                body.style.backgroundPositionX = e.pageX/-4 + 'px';
+                body.style.backgroundPositionY = e.pageY/-4 + 'px';
+
+                let element = document.createElement('div');
+                element.className = 'element';
+                body.prepend(element);
+
+                element.style.left = cursor.getBoundingClientRect().x + 'px';
+                element.style.top = cursor.getBoundingClientRect().y - 10 + 'px';
+
+                setTimeout(function(){
+                    let text = document.querySelectorAll('.element')[0],
+                    directionX = Math.random() < .5 ? -1 : 1,
+                    directionY = Math.random() < .5 ? -1 : 1
+
+                    text.style.left = parseInt(text.style.left) - (directionX * (Math.random() *200)) + 'px';
+                    text.style.left = parseInt(text.style.top) - (directionY * (Math.random() *200)) + 'px';
+                    text.style.opacity = 0;
+                    text.style.transform = 'scale(0,1)';
+                    text.innerHTML = randomText();
+                    setTimeout(function(){
+                        element.remove()
+                    },1000)
+                },10)
+
+
+
+            }
+
+            function randomText(){
+              var text = ("sdfnsjkdnbcdjsbvdejofibnef123672436236").split
+              ("");
+              letter = text[Math.floor(Math.random() * text.length)]; 
+              return letter;
+        
+            }
+        </script>
+    </div>
+    <div class="loader">
+        <span style="--i:10"></span>
+        <span style="--i:9"></span>
+        <span style="--i:8"></span>
+        <span style="--i:7"></span>
+        <span style="--i:6"></span>
+        <span style="--i:5"></span>
+        <span style="--i:4"></span>
+        <span style="--i:3"></span>
+        <span style="--i:2"></span>
+        <span style="--i:1"></span>
+
+    </div>
+</body>
+
+</html>
